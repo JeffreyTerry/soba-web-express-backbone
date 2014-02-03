@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Backbone Example</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Backbone Example</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="content"><!-- posts appear here --></div>
+</div>
+
+<!-- temlates -->
+
+<script type="text/template" id="content-template">
+  <h5>This is the content</h5>
+  <p>You might imagine some lorem ipsum here</p>
+  <p><a href="http://news.bbc.co.uk">BBC News</a>
+</script>
+
+<script type="text/template" id="post-template">
+  <h3><%= title %></h3>
+  <span class="author"><%= author %></span>
+  <p><%= body %></p>
+</script>
+
+<script type="text/template" id="posts-template">
+  <h1>Posts Homepage</h1>
+  <div id="posts-list"></div>
+</script>
+
+<!-- lib scripts -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- scripts -->
+
+<script type="text/javascript" src="/lib/jquery.js"></script>
+<script type="text/javascript" src="/lib/underscore.js"></script>
+<script type="text/javascript" src="/lib/backbone.js"></script>
+
+<script type="text/javascript" src="/js/models/post.js"></script>
+<script type="text/javascript" src="/js/collections/post.js"></script>
+
+<script type="text/javascript" src="/js/models/comment.js"></script>
+<script type="text/javascript" src="/js/collections/comments.js"></script>
+
+<script type="text/javascript" src="js/views/content.js"></script>
+<script type="text/javascript" src="js/views/posts.js"></script>
+<script type="text/javascript" src="js/views/post.js"></script>
+
+<script type="text/javascript">
+  /* bootloader: although this itself would go in its own view */
+  var posts = new App.Collection.Posts
+  var postsView = new App.View.Posts({collection: posts})
+  
+  $('#content').html( postsView.render().el );
+  posts.fetch()
+</script>
+
+</body>
+</html>
