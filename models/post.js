@@ -55,5 +55,10 @@ module.exports = {
   },
   find: function(id) {
     return posts[id];
+  },
+  create: function(params) {
+    params.id = posts.length;
+    posts.push(params);
+    return params;
   }
 };

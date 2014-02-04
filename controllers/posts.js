@@ -11,6 +11,8 @@ module.exports = {
   },
   create: function(req, res) {
     console.log('posts create', req.params, req.body);
+    var newpost = Post.create(req.body);
+    res.json( newpost );
   },
   update: function(req, res) {
     console.log('posts update', req.params, req.body);
